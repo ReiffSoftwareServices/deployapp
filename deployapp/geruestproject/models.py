@@ -4,7 +4,7 @@ from django import utils
 import random, string
 import numpy as np
 
-
+##ya bitches##
 
 class Client(models.Model):
 
