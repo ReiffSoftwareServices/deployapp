@@ -1,24 +1,29 @@
 from django.contrib import admin
-
-# Register your models here.
-
-from .models import Client, Inventar, Projekt, Geruestbuch, Equipments
+from .models import Firma, Ansprechpartner, Inventar, Projekt, Geruestbuch, Equipments
 
 
-
-class ClientAdmin(admin.ModelAdmin):
-
-    list_display = ('Company_Name', 'Contact_LastName')
-    fieldsets = (
-                    ('Unternehmen', {
-                                    'fields' : ('Company_Name', ('Company_City', 'Company_PostalCode', 'Company_Street'), ('Company_Email', 'Company_Phone'))}),
-                    ('Ansprechpartner', {
-                                    'fields' : (('Contact_LastName', 'Contact_FirstName'), ('Contact_Email', 'Contact_Phone'))})
-                )
-    search_fields = ('Company_Name', 'Contact_LastName')
+class AnsprechpartnerInline(admin.TabularInline):
+    model= Ansprechpartner
 
 
-admin.site.register(Client, ClientAdmin)
+class AnsprechpartnerAdmin(admin.ModelAdmin):
+    list_display= ('Nachname', 'Vorname', 'Firma', 'Telefon')
+
+admin.site.register(Ansprechpartner, AnsprechpartnerAdmin)
+
+class FirmaAdmin(admin.ModelAdmin):
+
+    list_display= ('Name', 'Stadt', 'Ansprechpartner')
+
+    #def get__Ansprechpartner(self, obj):
+    #    return obj.Ansprechpartner.Nachname
+
+    search_fields = ('Name', )
+    inlines= [AnsprechpartnerInline, ]
+
+
+
+admin.site.register(Firma, FirmaAdmin)
 
 
 
@@ -31,9 +36,7 @@ class EquipmentsInline(admin.TabularInline):
     model= Equipments
 
 class GeruestbuchAdmin(admin.ModelAdmin):
-    inlines= [
-              EquipmentsInline,
-              ]
+    inlines= [EquipmentsInline, ]
 
     list_display= ('Projekt', 'Mietwochen', 'Status', 'Preis')
     raw_id_fields= ('Projekt', )
