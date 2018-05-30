@@ -1,0 +1,30 @@
+<h2>Login</h2>
+<!-- {% block body %} -->
+
+
+
+
+  <div class= "container">
+          <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+          </form>
+  </div>
+
+  <!-- <table>
+      <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+      </tr>
+  </table> -->
+
+
+  <!-- {% endblock %} -->
+  {% if form.errors %}
+  <p>Benutzername oder Passwort falsch. Bitter erneute versuchen.</p>
+  {% endif %}

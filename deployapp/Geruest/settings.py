@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8-+4t(=rjn50(97q9n&=4tv2var^pg^g!s#4bm(x_lbfqa05)@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-
-ALLOWED_HOSTS = ['kielindustrialjan.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['kielindustrialjan.herokuapp.com','localhost','127.0.0.1']
 
 # Application definition
 
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware', # this is added for the login decorator
 ]
 
 ROOT_URLCONF = 'Geruest.urls'
@@ -70,35 +71,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Geruest.wsgi.application'
 
-
+############################ DATABASE STUFF #############################
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 """
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 """
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd48omkoqbdtpau', #
-        'USER': 'qlqltwuoijbmhk', #
-        'PASSWORD': 'b321da90dbe63475a5210790cb755511bc72316d60941af9a9dc4c1d29510993', #
-        'HOST': 'ec2-54-225-200-15.compute-1.amazonaws.com', #
-        'PORT': '5432', #
-
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd48omkoqbdtpau', #
+#         'USER': 'qlqltwuoijbmhk', #
+#         'PASSWORD': 'b321da90dbe63475a5210790cb755511bc72316d60941af9a9dc4c1d29510993', #
+#         'HOST': 'ec2-54-225-200-15.compute-1.amazonaws.com', #
+#         'PORT': '5432', #
+#
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+################################################################################
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -133,22 +136,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+
+######################### TEMPLATE STUFF ####################################
+
+
 """
 Addes for Heroku:
 """
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+#
+#
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
     ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# Activate Django-Heroku.
+#Activate Django-Heroku.
 """
 import django_heroku
 django_heroku.settings(locals())
 """
+
+
+# LOGIN
+#LOGIN_URL= '/accounts/login' #If login not correct direct to this page!
+LOGIN_REDIRECT_URL= '/home/' # Redirects the after successfull login to page   https://stackoverflow.com/questions/4870619/django-after-login-redirect-user-to-his-custom-page-mysite-com-username

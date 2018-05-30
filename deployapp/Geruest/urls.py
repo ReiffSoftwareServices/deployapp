@@ -20,7 +20,19 @@ from . import views
 
 
 urlpatterns = [
-	path ('',views.index, name="index"),
-    path(r'admin/', admin.site.urls),
-    #url(r'^', include('books.urls'))
+    path('', include('geruestproject.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),  # the login model django.contrib.auth.urlsprovides login etc. 
+    path('admin/', admin.site.urls),
 ]
+
+
+
+# The old views
+# urlpatterns = [
+#
+#
+#     path ('home/',views.index, name= 'index'),
+#     path('accounts/', include('django.contrib.auth.urls')),
+#     path('admin/', admin.site.urls),
+#     #url(r'^', include('books.urls'))
+# ]

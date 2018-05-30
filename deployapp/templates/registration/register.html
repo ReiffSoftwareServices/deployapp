@@ -1,0 +1,13 @@
+<h1> Registrierung </h1>
+
+<div class= "container">
+
+          <form  method= "post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">Login</button>
+          </form>
+</div>
+
+
+<!--  form.as_p is rendered as a paragraph-->
