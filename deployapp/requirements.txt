@@ -1,7 +1,7 @@
 backports.weakref==1.0rc1
 bleach==1.5.0
 dj-database-url==0.5.0
-Django==2.0.4
+Django==2.2.13
 gunicorn==19.7.1
 html5lib==0.9999999
 Markdown==2.2.0
