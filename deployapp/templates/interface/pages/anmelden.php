@@ -1,8 +1,8 @@
 <div class="container mt-4">
 	<div class="card">
 	  <div class="card-body">
-		<h5 class="card-title">Gerüst-Anmeldung</h5>
-		<h6 class="card-subtitle mb-2 text-muted">Anmeldung eines neuen Gerüstes.</h6>
+		<h5 class="card-title">Gerüst-Anmeldung XXX</h5>
+		<h6 class="card-subtitle mb-2 text-muted">ANMELDUNG eines neuen Gerüstes.</h6>
 		<p class="card-text">
 			<form>
 			  <div class="form-group">
