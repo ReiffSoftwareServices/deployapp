@@ -10,6 +10,6 @@ protobuf==3.3.0
 psycopg2==2.7.4
 pytz==2018.4
 six==1.10.0
-tensorflow==1.2.0rc2
+tensorflow==2.7.2
 Werkzeug==0.12.2
 whitenoise==3.3.1
