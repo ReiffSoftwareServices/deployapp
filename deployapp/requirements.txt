@@ -3,7 +3,7 @@ bleach==1.5.0
 dj-database-url==0.5.0
 Django==2.0.4
 gunicorn==19.7.1
-html5lib==0.9999999
+html5lib==0.999999999
 Markdown==2.2.0
 numpy==1.13.0
 protobuf==3.3.0
