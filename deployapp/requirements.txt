@@ -6,7 +6,7 @@ gunicorn==19.7.1
 html5lib==0.9999999
 Markdown==2.2.0
 numpy==1.13.0
-protobuf==3.3.0
+protobuf==3.18.3
 psycopg2==2.7.4
 pytz==2018.4
 six==1.10.0
